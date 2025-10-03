@@ -16,6 +16,6 @@ flux bootstrap github \
     --target-namespace=test \
     --create-target-namespace=true \
     --source=HelmRepository/external-secret \
-    --chart=podinfo \
+    --chart=external-secret \
     --values ../../values.yaml \
     --export > external-secret-release.yaml
