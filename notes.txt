@@ -1,0 +1,21 @@
+flux bootstrap github \
+  --token-auth \
+  --owner=ihsenalaya \
+  --repository=formation \
+  --branch=main \
+  --path=clusters/my-cluster \
+  --personal true
+
+    flux create source helm external-secret \
+    --url=https://charts.external-secrets.io/ \
+    --interval=10m \
+    --export > external-secret-demo.yaml
+
+
+  flux create hr external-secret-release \
+    --target-namespace=test \
+    --create-target-namespace=true \
+    --source=HelmRepository/external-secret \
+    --chart=podinfo \
+    --values ./values.yaml \
+    --export > external-secret-release.yaml
